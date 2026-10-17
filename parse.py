@@ -4,11 +4,6 @@ from models import AST, TokenType
 
 
 def parse(ast: AST) -> Optional[int]:
-    # if ast.value.type != TokenType.ROOT and ast.value is None:
-    #     return None
-
-    print("PARSE", ast)
-
     match ast.value.type:
         case TokenType.DIGIT:
             return int(ast.value.value)
