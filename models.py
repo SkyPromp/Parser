@@ -57,7 +57,6 @@ class AST:
         return f"{self.value}: {self.children}"
 
     def append_child(self, child) -> None:
-        print("app child", self.children, child)
         if self.children is None:
             self.children = [child]
         else:

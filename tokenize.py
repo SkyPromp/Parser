@@ -31,6 +31,14 @@ def tokenize(input_string: str):
         if len(current_token) != 0:
             if char_type == current_token[-1].type:
                 current_token.append(Char(char, char_type))
+            else:
+                if is_char_type_single_character_type(char_type):
+                    token = combine_chars_into_token(current_token)
+                    current_token = [Char(char, char_type)]
+
+                    # Append new token
+                    tokens.append(token)
+
         else:
             current_token.append(Char(char, char_type))
 

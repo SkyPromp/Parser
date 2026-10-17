@@ -8,8 +8,6 @@ def create_AST(tokens: List[TokenType]) -> Optional[AST]:
     parenthesis_tokens = []
 
     for token in tokens:
-        print("CURRENT TOKEN:", token, "PARENTHESIS_LEVEL:", parenthesis_level, "PARENTHESIS_TOKENS", parenthesis_tokens)
-
         if parenthesis_level > 0:
             if token.type == TokenType.CLOSED_PARENTHESIS:
                 parenthesis_level -= 1
@@ -37,7 +35,6 @@ def create_AST(tokens: List[TokenType]) -> Optional[AST]:
                     continue
 
             parenthesis_tokens.append(token)
-            print("Parenthesis level:", parenthesis_level, "Parenthesis tokens:", parenthesis_tokens)
 
             continue
 
@@ -59,10 +56,6 @@ def create_AST(tokens: List[TokenType]) -> Optional[AST]:
                 return None
             case _:
                 print("Unknown token type:", token)
-
-        print("-"*10)
-        print(ast_tree)
-        print("-"*10)
 
     return ast_tree
 
