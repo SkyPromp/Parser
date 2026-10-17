@@ -5,6 +5,8 @@ from models import AST, TokenType
 
 def parse(ast: AST) -> Optional[int]:
     match ast.value.type:
+        case TokenType.ROOT:
+            return None
         case TokenType.DIGIT:
             return int(ast.value.value)
         case TokenType.BINARY_OPERATOR:

@@ -1,4 +1,5 @@
 from tokenize import tokenize
+from typing import Optional
 from AST import create_AST
 from parse import parse
 
@@ -12,8 +13,10 @@ def runTests():
     testEndToEnd("10 - ( 9 + 3)", -2)
     testEndToEnd("10 - (( 9 + 3))", -2)
     testEndToEnd("10 - ( 1 + ( 9 + 3))", -3)
+    testEndToEnd("8", 8)
+    testEndToEnd("", None)
 
-def testEndToEnd(input_string: str, expected_outcome: int):
+def testEndToEnd(input_string: str, expected_outcome: Optional[int]):
     print(f"Running: {input_string} == {expected_outcome}")
     tokens = tokenize(input_string)
     ast = create_AST(tokens)

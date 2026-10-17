@@ -59,5 +59,16 @@ def create_AST(tokens: List[TokenType]) -> Optional[AST]:
             case _:
                 print("Unknown token type:", token)
 
+
+    # Reduce ROOT to singular child if possible
+    if ast_tree.value.type == TokenType.ROOT:
+        if len(ast_tree.children) == 0:
+            return ast_tree
+        if len(ast_tree.children) == 1:
+            ast_tree = ast_tree.children[0]
+        else:
+            print("ERROR in create_AST: Could not reduce root to singular child", ast_tree)
+
+            return None
     return ast_tree
 
