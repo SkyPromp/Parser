@@ -51,6 +51,7 @@ class AST:
                 return "{ }"
             else:
                 return f"{{}}: {self.children}"
+                # return f"{{}}: {{{', '.join(self.children)}}}"
 
         if self.children is None:
             return f"{self.value}"
