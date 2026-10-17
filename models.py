@@ -16,10 +16,11 @@ class Char:
     type: CharType
 
 class TokenType(Enum):
-    DIGIT = 1
-    BINARY_OPERATOR = 2
-    OPEN_PARENTHESIS = 3
-    CLOSED_PARENTHESIS = 4
+    ROOT = 1
+    DIGIT = 2
+    BINARY_OPERATOR = 3
+    OPEN_PARENTHESIS = 4
+    CLOSED_PARENTHESIS = 5
 
     def __str__(self) -> str:
         return self.name
@@ -49,10 +50,18 @@ class AST:
             if self.children is None:
                 return "{ }"
             else:
-                return f"{{}}: [{self.children}]"
+                return f"{{}}: {self.children}"
 
         if self.children is None:
             return f"{self.value}"
 
-        return f"{self.value}: [{self.children}]"
+        return f"{self.value}: {self.children}"
+
+    def append_child(self, child) -> None:
+        print("app child", self.children, child)
+        if self.children is None:
+            self.children = [child]
+        else:
+            self.children.append(child)
+
 
