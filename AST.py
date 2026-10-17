@@ -9,7 +9,9 @@ def create_AST(tokens: List[TokenType]) -> Optional[AST]:
 
     for token in tokens:
         if parenthesis_level > 0:
-            if token.type == TokenType.CLOSED_PARENTHESIS:
+            if token.type == TokenType.OPEN_PARENTHESIS:
+                parenthesis_level += 1
+            elif token.type == TokenType.CLOSED_PARENTHESIS:
                 parenthesis_level -= 1
 
                 if parenthesis_level < 0:
