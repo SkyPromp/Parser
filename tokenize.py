@@ -66,7 +66,7 @@ def get_char_type(char: str):
         return CharType.WHITESPACE
     elif char in digits:
         return CharType.DIGIT
-    elif char in "+":
+    elif char in "+-":
         return  CharType.BINARY_OPERATOR
     elif char in "(":
         return  CharType.OPEN_PARENTHESIS

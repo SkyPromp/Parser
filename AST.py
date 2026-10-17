@@ -42,7 +42,7 @@ def create_AST(tokens: List[TokenType]) -> Optional[AST]:
             continue
 
         match token.type:
-            case TokenType.DIGIT: # Check that it's parent has the correct amount of children
+            case TokenType.DIGIT: # Check that it's parent has the correct amount of children and check that digit has no children
                 node = AST(token, None)
                 ast_tree.append_child(node)
                 # ast_tree.children.append(node)

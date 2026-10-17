@@ -13,17 +13,16 @@ def parse(ast: AST) -> Optional[int]:
         case TokenType.DIGIT:
             return int(ast.value.value)
         case TokenType.BINARY_OPERATOR:
+            if len(ast.children) != 2:
+                print("ERROR in parse: Incorrect amount of children for binary operation", ast)
+
+                return None
+
             match ast.value.value:
                 case "+":
-                    if len(ast.children) != 2:
-                        print("ERROR in parse: Incorrect amount of children for binary operation", ast)
-
-                        return None
-
-                    print("PARSE BINOP c1:", ast.children[0])
-                    print("PARSE BINOP c2:", ast.children[1])
-
                     return parse(ast.children[0]) + parse(ast.children[1])
+                case "-":
+                    return parse(ast.children[0]) - parse(ast.children[1])
                 case _:
                     print("ERROR in parse: Unknown operator type", ast.value)
         case _:
